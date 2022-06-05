@@ -1,0 +1,29 @@
+
+<% layout('layouts/boilerplate.ejs') %>
+
+<h1 style="text-align: center;" class = "mb-4">Book This Property</h1>
+
+<div class = "row">
+        <div class = "col-8 offset-2">
+                <div class = "card mb-5">
+                <img class="card-img-top" src="<%=prop.image%>" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title"> <%=prop.title%> </h5>
+                  <p class="card-text"> <%= prop.description%></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-muted"><%=prop.location%></li>
+                  <li class="list-group-item">₹ <%=prop.price%> / Per Night</li>
+                </ul>
+                <div class="card-body">
+                  <a class = "btn btn-outline-primary" href="/properties/<%=prop.id%>/edit" class="card-link">Edit Property</a>
+                  <form class = "d-inline" action="/properties/<%=prop.id%>?_method=DELETE" method="POST">
+                        <button class = "btn btn-outline-danger">Delete Property</button>
+                </form>
+                   
+                </div>
+              </div>
+        </div>
+</div>
+</div>
+

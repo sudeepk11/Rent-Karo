@@ -1,0 +1,31 @@
+<% layout('layouts/boilerplate.ejs') %>
+    <h1 class="text-muted mb-5">Properties Near You</h1>
+    <% for(let property of properties) { %>
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid" src="<%= property.image %>" alt="">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h3 class="card-title" >
+                            <%=property.title%>
+                        </h3>
+                        <div class="card-text">
+                            <%= property.description%>
+                        </div>
+                        <p class="card-text"><small class="text-muted">
+                                <%= property.location %>
+                            </small></p>
+                        <p class="card-text d-inline"><small class="text-muted">Book Now at ₹ <h6 class="d-inline"><%= property.price %></h6></small></p>
+                        <a class="btn btn-outline-info" href="/properties/<%=property.id%>">View <%= property.title %>
+                                </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+            <a href="/properties/new" class="btn btn-outline-dark">List Your Own Property!</a>
+
+
+            

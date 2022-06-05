@@ -1,0 +1,55 @@
+<% layout('layouts/boilerplate.ejs') %>
+    <div class="row" >
+        <h1 class="text-center mb-3">Add New Property</h1>
+        <div class="col-6 offset-3">
+            <form class="mb-2 validation" action="/properties" method="POST" novalidate >
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title *</label>
+                    <input class="form-control" type="text" id="title" name="property[title]" placeholder ="Enter Title" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location *</label>
+                    <input class="form-control type=" text" id="location" name="property[location]" placeholder ="Enter Location" required> 
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image URL *</label>
+                    <input class="form-control type=" text" id="image" name="property[image]" placeholder = "Enter Image URL" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Add Description *</label>
+                    <input class="form-control type=" text" id="description" name="property[description]" placeholder ="Add Description" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <div class = "input-group">
+                        <span class = "input-group-text" id ="price-label">₹</span>
+                    <input class="form-control" type="text" id="price" aria-describedby ="price-label" name="property[price]" placeholder="Enter Price" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+            </div>
+
+                <div class="mb-3">
+                    <label for="ref" class="form-label">Referral Code</label>
+                    <input class="form-control type=" text" id="ref" name="property[ref]" placeholder="Enter Referral Code">
+                </div>
+                <button class="btn btn-outline-success mt-2">List Your Property!</button>
+                <h6 class="mt-5 mb-5 text-center text-muted">For Any Queries Contact Us @ +919008758909</h6>
+            </form>
+        </div>
+    </div>
+

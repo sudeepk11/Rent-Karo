@@ -1,9 +1,9 @@
 module.exports = [
     {
         city: "Belgaum", 
-        title: "Adarsh Palace",
-        price: 2499,
-        image: 'https://pix10.agoda.net/hotelImages/17495657/-1/b2a379340973d1f0025db534192dd822.png?ca=13&ce=1&s=1024x768',
+        title: "Regenta Resort",
+        price: 4499,
+        image: 'https://r1imghtlak.mmtcdn.com/26a1fb12a4b311e990a80242ac110005.jpg?&output-quality=75&downsize=583:388&crop=583:388;0,24&output-format=jpg',
         latitude: 40.7127837,
         longitude: -74.0059413,
         state: "Karnataka"

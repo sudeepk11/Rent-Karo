@@ -28,7 +28,7 @@ const seedDB = async() => {
        location: BelgaumCities[i].city + " " + BelgaumCities[i].state,
        description:  'Lorem ipsum dolor sit citationem fugiat, quaerat repudiandae sit voluptatum dignissimos distinctio at repellendus corrupti doloremque eaque eos..replace Inventorequod quas!',
        image: BelgaumCities[i].image
-      
+       
      })
      await newProperty.save();
    }

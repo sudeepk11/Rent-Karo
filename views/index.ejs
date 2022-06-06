@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate.ejs') %>
+<div>
     <h1 class="text-muted mb-5">Properties Near You</h1>
     <% for(let property of properties) { %>
         <div class="card mb-3">
@@ -24,8 +25,17 @@
                 </div>
             </div>
         </div>
-        <% } %>
-            <a href="/properties/new" class="btn btn-outline-dark">List Your Own Property!</a>
 
+        <% } %>
+
+       
+
+
+        <h6 class ="mt- 3 text-center">Business owner? Why don't you bring your Hotel online in quick 3 steps!</h6>
+            <div class="text-center">
+                <a href="/properties/new" style = "margin: 0;"class="mb-5 mt-2 btn btn-outline-dark">List Your Own Property!</a>
+   
+            </div>
+    
 
             

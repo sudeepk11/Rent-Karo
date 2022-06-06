@@ -6,6 +6,11 @@ const RentKaroSchema = new Schema({
     description: String,
     image: String,
     location: String,
-    ref: String
+    reviews: [
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'Review'
+    }
+    ]
 })
 module.exports = mongoose.model('property',RentKaroSchema)

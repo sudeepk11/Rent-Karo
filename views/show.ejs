@@ -23,7 +23,21 @@
                    
                 </div>
               </div>
+              <h3 class = "text-muted">Leave A Review:</h3>
+              <form action = "/properties/<%=prop.id%>/reviews" method ="POST" class = "mb-3">
+                <div class = "mb-3">
+                  <label class ="form-label" for="rating">Rating</label>
+                  <input class = "form-range" type="range" name="review[rating]" id="" min = "1" max="5">
+                </div>
+                <div class = "mb-3">
+                  <label class = "form-label for="body">Review</label>
+                  <textarea class = "form-control" name="review[body]" id="body" cols="30" rows="3"></textarea>
+                </div>
+                <button class = "btn btn-outline-success">Submit Review</button>
+              </form>
         </div>
+
+
 </div>
 </div>
 

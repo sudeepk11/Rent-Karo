@@ -1,42 +1,47 @@
 <% layout('layouts/boilerplate.ejs') %>
+    <div>
+        <h1 class="mb-5" style="font-weight: 700;">Recommended for You</h1>
+        <% for(let property of properties) { %>
+            <div class="card mb-3 shadow">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-fluid" src="<%= property.image %>" alt="">
+                    </div>
+                    <div class="col-md-8 col-sm-12">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <%=property.title%>
+                            </h3>
 
-<div>
-    <h1 class="text-muted mb-5">Properties Near You</h1>
-    <% for(let property of properties) { %>
-        <div class="card mb-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img class="img-fluid" src="<%= property.image %>" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h3 class="card-title" >
-                            <%=property.title%>
-                        </h3>
-                        <div class="card-text">
-                            <%= property.description%>
+                            <div class="card-text">
+                                <%= property.description%>
+                            </div>
+
+                            <p class="card-text"><small class="text-muted">
+                                    <%= property.location %>
+                                </small></p>
+
+                            <p class="card-text mt-3 mb-3"> ⚡️ Free Cancellation till 24 hrs before checkout </p>
+
+                            <p class="card-text d-inline"><small class="text-muted">Book Now at <h6 class="d-inline">
+                                        <%= property.price %>
+                                    </h6></small></p>
+                            <a class="btn btn-outline-info" href="/properties/<%=property.id%>">View <%= property.title
+                                    %>
+                            </a>
+                            <a class="btn btn-outline-dark mx-3" href="/properties/<%=property.id%>">Book Now @ ₹<%= property.price
+                                %>
+                        </a>
                         </div>
-                        <p class="card-text"><small class="text-muted">
-                                <%= property.location %>
-                            </small></p>
-                        <p class="card-text d-inline"><small class="text-muted">Book Now at ₹ <h6 class="d-inline"><%= property.price %></h6></small></p>
-                        <a class="btn btn-outline-info" href="/properties/<%=property.id%>">View <%= property.title %>
-                                </a>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <% } %>
+            <% } %>
+                <h6 style="font-weight: bold;" class="mt- 3 text-center">Business owner? Why don't you bring your Hotel
+                    online in quick 3 steps!</h6>
+                <div class="text-center">
+                    <a href="/properties/new" style="margin: 0;" class="mb-5 mt-2 btn btn-outline-dark">List Your Own
+                        Property!</a>
 
-       
-
-
-        <h6 style = "font-weight: bold;"class ="mt- 3 text-center">Business owner? Why don't you bring your Hotel online in quick 3 steps!</h6>
-            <div class="text-center">
-                <a href="/properties/new" style = "margin: 0;"class="mb-5 mt-2 btn btn-outline-dark">List Your Own Property!</a>
-   
-            </div>
-    
-
-            
+                </div>

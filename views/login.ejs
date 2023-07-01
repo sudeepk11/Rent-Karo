@@ -1,20 +1,36 @@
 <% layout('layouts/boilerplate') %>
-<h1>Login</h1>
-<form action="/login" class ="validation" method = "POST" novalidate>
-    <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input class="form-control" type=" text" id="username" name="username" placeholder ="Enter Your Username" required> 
-        <div class="valid-feedback">
-            Looks good!
-          </div>
+    <style>
+        body {
+            background-image: url("https://images.unsplash.com/photo-1550895030-823330fc2551?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80");
+            background-image: url("https://images.unsplash.com/photo-1504548840739-580b10ae7715?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+            background-image: url('https://images.unsplash.com/photo-1597691420307-20554ef4a069?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+            background-image: url("https://images.unsplash.com/photo-1547623641-d2c56c03e2a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y3JlYW0lMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60");
+   
+            background-image: url("https://images.unsplash.com/photo-1544984243-ec57ea16fe25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=1400&q=60");
+            background-repeat: repeat-y;
+            background-size: cover;
+    background-position: center;
+        }   
+    </style>
+    <div class="card col-6 offset-3 shadow " style="padding: 5% 3%; margin-top: 9%; ">
+        <h1 style="font-weight: 400;" class="mb-4">Login</h1>
+        <form action="/login" class="validation" method="POST" novalidate>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input class="form-control" type=" text" id="username" name="username" placeholder="Enter Your Username"
+                    required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label mt-2">Password</label>
+                <input class="form-control" type="password" id="password" name="password"
+                    placeholder="Enter Your Password" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <button class="btn btn-outline-dark mt-3" style="text-align: center;">Login</button>
     </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input class="form-control" type="password" id="password" name="password" placeholder ="Enter Your Password" required> 
-        <div class="valid-feedback">
-            Looks good!
-          </div>
-    </div>
-    <button class = "btn btn-outline-success">Login</button>
-    
-</form>
+    </form>

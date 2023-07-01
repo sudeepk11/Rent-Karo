@@ -1,7 +1,20 @@
 <% layout('layouts/boilerplate') %>
-<h1>Register</h1>
+<style>
+    body{
+
+        background-image: url("https://images.unsplash.com/photo-1544984243-ec57ea16fe25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=1400&q=60");
+   background-repeat: repeat-y;
+   background-size: cover;
+      
+background-position: center;
+    }
+         
+
+</style>
+<div class = "col-md-6 offset-md-3 card shadow" style="padding: 5% 3%; margin-top: 9%;">
+    <h1 style="font-weight: 400;" class = "mb-4">Register</h1>
 <form action="/register" class ="validation" method = "POST" novalidate>
-    <div class="mb-3">
+    <div class="mb-3 ">
         <label for="username" class="form-label">Username</label>
         <input class="form-control" type=" text" id="username" name="username" placeholder ="Enter Your Username" required> 
         <div class="valid-feedback">
@@ -22,6 +35,7 @@
             Looks good!
           </div>
     </div>
-    <button class = "btn btn-outline-success">Register</button>
+    <button class = "btn btn-outline-dark mt-3">Register</button>
     
 </form>
+</div>

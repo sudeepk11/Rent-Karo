@@ -13,9 +13,10 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport')
 const localStratergy = require('passport-local')
-const user = require('./models/user')
+const user = require('./models/user');
+const { populate } = require('./models/review');
 
-// All Use and Set Properties
+
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }))
 app.set('view engine', 'ejs');
@@ -50,6 +51,17 @@ const isAuthor = async(req,res,next) =>
     }}
     next();
 }
+const isReviewAuthor = async(req,res,next) =>
+{
+    const {reviewID,id} = req.params;
+    const p = await Review.findById(id)
+  
+    if(!p.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission to do this')
+        return res.redirect(`/properties/${id}`)
+    }
+    next();
+}
 app.use(session(sessionConfig))
 app.use(flash());
 app.use(passport.initialize())
@@ -77,7 +89,8 @@ const validateCampground = (req, res, next) => {
         next();
     }
 }
-const validateReview = (req, res, next) => {
+const validateReview = (req, res, next) => 
+{
 
     const { error } = reviewSchema.validate(req.body);
     if (error) {
@@ -92,7 +105,6 @@ const validateReview = (req, res, next) => {
 // Connecting Mongoose
 mongoose.connect('mongodb://localhost:27017/RentKaro', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
 })
     .then(function () {
         console.log("Connected")
@@ -159,19 +171,22 @@ app.get('/properties/new', isLoggedIn, catchAsync(async function (req, res) {
 
     res.render('newProperty.ejs');
 }));
-
 app.get("/properties/:id", catchAsync(async function (req, res) {
 
     const id = req.params.id;
-    const prop = await property.findById(id).populate('reviews').populate('author');
+    const prop = await property.findById(id).populate({
+        path: 'reviews',
+        populate:
+        {
+        path: 'author'
+        }})
+    .populate('author');
     if (!prop) {
         req.flash('error', 'Cannot Find that campground')
         return res.redirect('/properties')
     }
-
     res.render('show.ejs', { prop });
 }));
-
 app.get("/properties/:id/edit", isAuthor, isLoggedIn, catchAsync(async function (req, res) {
     const id = req.params.id;
     const prop = await property.findById(id);
@@ -212,19 +227,18 @@ app.put('/properties/:id', isLoggedIn, isAuthor, validateCampground, catchAsync(
 }));
 
 
-app.delete("/properties/:id", catchAsync(async function (req, res) {
+app.delete("/properties/:id", isAuthor,  catchAsync(async function (req, res) {
     const id = req.params.id;
     const Property = await property.findById(id);
     if (!Property.author.equals(req.user._id)) {
         req.flash('error', 'You do not have the permission to do that!')
         return res.redirect(`/properties/${id}`)
     }
-
     await property.findByIdAndDelete(id)
     res.redirect('/properties')
 }));
 
-app.delete('/properties/:id/reviews/:reviewID', isAuthor, catchAsync(async (req, res) => {
+app.delete('/properties/:id/reviews/:reviewID', isAuthor, isLoggedIn, catchAsync(async (req, res) => {
     await property.findByIdAndUpdate(req.params.id, { $pull: { reviews: req.params.reviewID } })
     await Review.findByIdAndDelete(req.params.id);
     res.redirect(`/properties/${req.params.id}`)
